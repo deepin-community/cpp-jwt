@@ -1,0 +1,51 @@
+#!/bin/sh
+
+set -eu
+
+cd $AUTOPKGTEST_TMP
+
+cat <<EOF > main.cpp
+#include <iostream>
+#include <jwt/jwt.hpp>
+
+int main() {
+  using namespace jwt::params;
+
+  auto key = "secret"; //Secret to use for the algorithm
+  //Create JWT object
+  jwt::jwt_object obj{algorithm("HS256"), payload({{"some", "payload"}}), secret(key)};
+
+  //Get the encoded string/assertion
+  auto enc_str = obj.signature();
+  std::cout << enc_str << std::endl;
+
+  //Decode
+  auto dec_obj = jwt::decode(enc_str, algorithms({"HS256"}), secret(key));
+  std::cout << dec_obj.header() << std::endl;
+  std::cout << dec_obj.payload() << std::endl;
+
+  return 0;
+}
+EOF
+
+cat <<EOF > CMakeLists.txt
+cmake_minimum_required(VERSION 3.15)
+
+project("cpp-jwt-autopkgtest-cmake")
+
+find_package("cpp-jwt")
+
+add_executable(main "main.cpp")
+
+target_link_libraries(main cpp-jwt::cpp-jwt)
+EOF
+
+# Suppress useless warning from GCC saying that some ABI changed
+# in GCC 7.1 when compiling on arm.
+if realpath $(command -v c++) | grep -q g++; then
+	export CXXFLAGS='-Wno-psabi'
+fi
+
+cmake -B build
+cmake --build build
+./build/main

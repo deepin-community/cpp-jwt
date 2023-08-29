@@ -1,15 +1,28 @@
-Source: template-repository
-Section: unknown
+Source: cpp-jwt
+Section: libdevel
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Andrea Pappacoda <andrea@pappacoda.it>
+Build-Depends: debhelper-compat (= 13)
+Build-Depends-Indep: cmake (>= 3.14),
+                     libgtest-dev <!nocheck>,
+                     libssl-dev,
+                     nlohmann-json3-dev
+Standards-Version: 4.6.2
+Homepage: https://github.com/arun11299/cpp-jwt
+Vcs-Git: https://salsa.debian.org/debian/cpp-jwt.git
+Vcs-Browser: https://salsa.debian.org/debian/cpp-jwt
+Rules-Requires-Root: no
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: libcpp-jwt-dev
+Architecture: all
+Multi-Arch: foreign
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends},
+         libssl-dev,
+         nlohmann-json3-dev
+Description: JSON Web Token library for C++
+ JSON Web Token (JWT) is a JSON based standard (RFC-7519) for creating
+ assertions or access tokens.
+ .
+ cpp-jwt, an header-only C++ library, provides an easy to use API to
+ create, encode and decode JWT objects.

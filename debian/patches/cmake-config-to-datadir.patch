@@ -1,0 +1,16 @@
+Description: Install CMake Config files to /usr/share
+Author: Andrea Pappacoda <andrea@pappacoda.it>
+Forwarded: https://github.com/arun11299/cpp-jwt/pull/95
+Last-Update: 2022-08-08
+
+--- cpp-jwt-1.4.orig/CMakeLists.txt
++++ cpp-jwt-1.4/CMakeLists.txt
+@@ -76,7 +76,7 @@ endif()
+ 
+ include(GNUInstallDirs)
+ include(CMakePackageConfigHelpers)
+-set(CPP_JWT_CONFIG_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME})
++set(CPP_JWT_CONFIG_INSTALL_DIR ${CMAKE_INSTALL_DATADIR}/cmake/${PROJECT_NAME})
+ 
+ install(
+   TARGETS ${PROJECT_NAME}
