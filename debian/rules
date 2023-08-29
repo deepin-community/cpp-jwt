@@ -2,3 +2,18 @@
 
 %:
 	dh $@
+
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+  test := true
+else
+  test := false
+endif
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+		-DCPP_JWT_BUILD_EXAMPLES=false \
+		-DCPP_JWT_BUILD_TESTS=$(test) \
+		-DCPP_JWT_USE_VENDORED_NLOHMANN_JSON=false
+
+execute_after_dh_auto_install:
+	rmdir debian/libcpp-jwt-dev/usr/include/jwt/test

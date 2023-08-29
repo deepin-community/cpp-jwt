@@ -1,5 +1,17 @@
-template-repository (1.0-1) unstable; urgency=medium
+cpp-jwt (1.4+ds-3) unstable; urgency=medium
 
-  * Initial release
+  * d/control: mark libcpp-jwt-dev as Multi-Arch: foreign
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Tue, 27 Dec 2022 14:31:31 +0100
+
+cpp-jwt (1.4+ds-2) unstable; urgency=medium
+
+  * d/tests/cmake: suppress psABI warning on ARM
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Wed, 24 Aug 2022 23:28:11 +0200
+
+cpp-jwt (1.4+ds-1) unstable; urgency=medium
+
+  * Initial release. (Closes: #1016833)
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Tue, 09 Aug 2022 10:13:41 +0200

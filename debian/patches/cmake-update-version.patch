@@ -1,0 +1,14 @@
+Description: Update version in CMakeLists.txt
+Author: Andrea Pappacoda <andrea@pappacoda.it>
+Forwarded: not-needed
+Last-Update: 2022-08-08
+
+--- cpp-jwt-1.4.orig/CMakeLists.txt
++++ cpp-jwt-1.4/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ cmake_minimum_required(VERSION 3.5.0)
+-project(cpp-jwt VERSION 1.2.0)
++project(cpp-jwt VERSION 1.4.0)
+ 
+ option(CPP_JWT_BUILD_EXAMPLES "build examples" ON)
+ option(CPP_JWT_BUILD_TESTS "build tests" ON)

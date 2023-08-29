@@ -1,0 +1,3 @@
+cmake-update-version.patch
+cmake-config-to-datadir.patch
+cmake-version-file-arch-independent.patch
